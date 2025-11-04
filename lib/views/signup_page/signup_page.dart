@@ -2,7 +2,6 @@ import 'package:expense_tracker/views/global_widgets/custom_button.dart';
 import 'package:expense_tracker/views/global_widgets/text_field.dart';
 import 'package:expense_tracker/views/signin_page/signin_page.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});

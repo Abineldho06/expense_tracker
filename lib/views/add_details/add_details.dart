@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:expense_tracker/core/constants/image_constants.dart';
 import 'package:expense_tracker/models/user.dart';
 import 'package:expense_tracker/services/db_helper.dart';
@@ -7,7 +5,7 @@ import 'package:expense_tracker/services/userservice.dart';
 import 'package:expense_tracker/views/bottom_nav_bar/bottom_nav_bar.dart';
 import 'package:expense_tracker/views/global_widgets/custom_button.dart';
 import 'package:expense_tracker/views/global_widgets/text_field.dart';
-import 'package:expense_tracker/views/homepage/homepage.dart';
+
 import 'package:flutter/material.dart';
 
 class AddDetailsScreen extends StatefulWidget {
@@ -148,14 +146,12 @@ class _AddDetailsScreenState extends State<AddDetailsScreen> {
                             labelText: 'email',
                             keyboardType: TextInputType.emailAddress,
                             validator: (value) {
-                              (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Enter email';
-                                } else if (!value.contains('@')) {
-                                  return 'Enter valid email';
-                                }
-                                return null;
-                              };
+                              if (value == null || value.isEmpty) {
+                                return 'Enter email';
+                              } else if (!value.contains('@')) {
+                                return 'Enter valid email';
+                              }
+                              return null;
                             },
                           ),
                           const SizedBox(height: 16),

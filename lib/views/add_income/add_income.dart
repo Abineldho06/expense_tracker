@@ -1,7 +1,5 @@
 import 'package:expense_tracker/models/income.dart';
 import 'package:expense_tracker/services/db_helper.dart';
-import 'package:expense_tracker/views/bottom_nav_bar/bottom_nav_bar.dart';
-import 'package:expense_tracker/views/category_adding/add_category.dart';
 import 'package:expense_tracker/views/global_widgets/custom_button.dart';
 import 'package:expense_tracker/views/global_widgets/text_field.dart';
 import 'package:flutter/material.dart';
