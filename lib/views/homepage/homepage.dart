@@ -50,18 +50,15 @@ class _HomepageState extends State<Homepage> {
         child: Scaffold(
           appBar: AppBar(
             backgroundColor: Colors.transparent,
+            elevation: 0,
             title: Text(
-              'Home',
+              'home',
               style: GoogleFonts.inter(
-                fontSize: 30,
+                fontSize: 26,
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            actions: [
-              CircleAvatar(radius: 20, backgroundColor: Colors.white),
-              SizedBox(width: 15),
-            ],
           ),
           backgroundColor: Colors.transparent,
           body: SingleChildScrollView(
@@ -93,9 +90,9 @@ class _HomepageState extends State<Homepage> {
     return Center(
       child: Container(
         child: Lottie.asset(
-          repeat: true,
-          'assets/json/money.json',
-          width: MediaQuery.sizeOf(context).width * .61,
+          repeat: false,
+          'assets/json/lottie.json',
+          width: MediaQuery.sizeOf(context).width * 1,
           height: MediaQuery.sizeOf(context).height * .27,
           fit: BoxFit.fill,
         ),
@@ -298,23 +295,33 @@ class _HomepageState extends State<Homepage> {
     } else {
       return Container(
         decoration: BoxDecoration(
-          color: Colors.white12,
-          border: Border.all(color: Colors.white60),
-          borderRadius: BorderRadius.circular(20),
+          gradient: LinearGradient(
+            begin: AlignmentGeometry.topRight,
+            end: AlignmentDirectional.bottomStart,
+            colors: [Colors.teal, Colors.tealAccent, Colors.white60],
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.white60,
+              offset: Offset(-2, 2),
+              blurRadius: 10,
+            ),
+          ],
+          borderRadius: BorderRadius.circular(15),
         ),
 
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 25),
+          padding: const EdgeInsets.symmetric(horizontal: 35, vertical: 25),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             spacing: 10,
             children: [
               Text(
-                '${user.first['name']}',
-                style: GoogleFonts.inter(
+                '  ${user.first['name']}',
+                style: GoogleFonts.montserrat(
                   fontWeight: FontWeight.bold,
                   fontSize: 20,
-                  color: Colors.white,
+                  color: Colors.black,
                 ),
               ),
               Row(
@@ -322,14 +329,14 @@ class _HomepageState extends State<Homepage> {
                 spacing: 20,
                 children: [
                   Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text(
                         'Your budget',
                         style: GoogleFonts.montserrat(
                           fontWeight: FontWeight.w500,
-                          fontSize: 16,
-                          color: Colors.white,
+                          fontSize: 13,
+                          color: Colors.black,
                         ),
                       ),
                       Row(children: [   
@@ -337,10 +344,10 @@ class _HomepageState extends State<Homepage> {
                       ),
                       Text(
                         '  ₹${user.first['budget']}',
-                        style: GoogleFonts.inter(
+                        style: GoogleFonts.montserrat(
                           fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                          color: Colors.white,
+                          fontSize: 25,
+                          color: Colors.black,
                         ),
                       ),
                     ],
@@ -351,16 +358,16 @@ class _HomepageState extends State<Homepage> {
                         'Your income',
                         style: GoogleFonts.montserrat(
                           fontWeight: FontWeight.w500,
-                          fontSize: 16,
-                          color: Colors.white,
+                          fontSize: 12,
+                          color: Colors.black,
                         ),
                       ),
                       Text(
                         '₹${user.first['income']}',
-                        style: GoogleFonts.inter(
+                        style: GoogleFonts.montserrat(
                           fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                          color: Colors.white,
+                          fontSize: 25,
+                          color: Colors.black,
                         ),
                       ),
                     ],

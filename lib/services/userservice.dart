@@ -38,4 +38,9 @@ class UserService {
       return false;
     }
   }
+
+  Future<void> logout() async {
+    final pref = await SharedPreferences.getInstance();
+    pref.clear();
+  }
 }

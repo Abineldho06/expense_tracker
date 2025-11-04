@@ -132,14 +132,12 @@ class _AddDetailsScreenState extends State<AddDetailsScreen> {
                             labelText: 'user name',
                             keyboardType: TextInputType.emailAddress,
                             validator: (value) {
-                              if (formkey.currentState!.validate()) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Please enter User Name';
-                                } else if (value.length < 3) {
-                                  return 'User Name must contain morethan 3 character';
-                                } else {
-                                  return null;
-                                }
+                              if (value == null || value.isEmpty) {
+                                return 'Please enter User Name';
+                              } else if (value.length < 3) {
+                                return 'User Name must contain morethan 3 character';
+                              } else {
+                                return null;
                               }
                             },
                           ),
@@ -150,16 +148,14 @@ class _AddDetailsScreenState extends State<AddDetailsScreen> {
                             labelText: 'email',
                             keyboardType: TextInputType.emailAddress,
                             validator: (value) {
-                              if (formkey.currentState!.validate()) {
-                                (value) {
-                                  if (value == null || value.isEmpty) {
-                                    return 'Enter email';
-                                  } else if (!value.contains('@')) {
-                                    return 'Enter valid email';
-                                  }
-                                  return null;
-                                };
-                              }
+                              (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Enter email';
+                                } else if (!value.contains('@')) {
+                                  return 'Enter valid email';
+                                }
+                                return null;
+                              };
                             },
                           ),
                           const SizedBox(height: 16),
@@ -169,12 +165,10 @@ class _AddDetailsScreenState extends State<AddDetailsScreen> {
                             labelText: 'income',
                             keyboardType: TextInputType.number,
                             validator: (value) {
-                              if (formkey.currentState!.validate()) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Please enter income';
-                                } else {
-                                  return null;
-                                }
+                              if (value == null || value.isEmpty) {
+                                return 'Please enter income';
+                              } else {
+                                return null;
                               }
                             },
                           ),
@@ -185,12 +179,10 @@ class _AddDetailsScreenState extends State<AddDetailsScreen> {
                             labelText: 'budget',
                             keyboardType: TextInputType.number,
                             validator: (value) {
-                              if (formkey.currentState!.validate()) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Please enter budget';
-                                } else {
-                                  return null;
-                                }
+                              if (value!.isEmpty) {
+                                return 'Please enter budget';
+                              } else {
+                                return null;
                               }
                             },
                           ),

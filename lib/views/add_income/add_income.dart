@@ -106,19 +106,17 @@ class _AddIncomeScreenState extends State<AddIncomeScreen> {
         backgroundColor: Colors.transparent,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
-          leading: const BackButton(color: Colors.white),
+          elevation: 0,
+          leading: BackButton(color: Colors.white),
           title: Text(
-            'Add Income',
+            'add income',
             style: GoogleFonts.inter(
-              fontSize: 24,
+              fontSize: 26,
               color: Colors.white,
               fontWeight: FontWeight.bold,
             ),
           ),
-          actions: const [
-            CircleAvatar(radius: 20, backgroundColor: Colors.white),
-            SizedBox(width: 15),
-          ],
+          centerTitle: true,
         ),
         body: Center(
           child: Padding(
