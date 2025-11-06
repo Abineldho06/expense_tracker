@@ -51,6 +51,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   void signout() {
     userService.logout();
+    helper.deleteusertable();
   }
 
   @override
@@ -61,9 +62,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
           begin: Alignment.topLeft,
           end: Alignment.bottomCenter,
           colors: [
-            Color.fromARGB(255, 2, 71, 88), // Deep violet at top
-            Color.fromARGB(255, 0, 28, 42), // Rich indigo center
-            Color.fromARGB(255, 1, 29, 55), // Rich indigo center
+            Color.fromARGB(255, 108, 5, 132),
+            Color.fromARGB(255, 0, 0, 0),
+            Color.fromARGB(255, 0, 0, 0),
+            Color.fromARGB(255, 0, 0, 0),
+            Color.fromARGB(255, 46, 3, 56),
+            Color.fromARGB(255, 92, 3, 112),
+            Color.fromARGB(255, 50, 3, 60),
+            Color.fromARGB(255, 0, 0, 0), // Rich indigo center
             Color.fromARGB(255, 9, 0, 18), // Subtle purple at bottom
           ],
         ),
@@ -288,21 +294,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 SizedBox(height: 30),
                 Container(
                   decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: AlignmentGeometry.topRight,
-                      end: AlignmentDirectional.bottomStart,
-                      colors: [Colors.teal, Colors.tealAccent, Colors.white60],
+                    border: Border.all(color: Colors.white24),
+                    image: DecorationImage(
+                      image: AssetImage('assets/images/atmcard.png'),
+                      fit: BoxFit.cover,
                     ),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.white60,
-                        offset: Offset(-2, 2),
-                        blurRadius: 10,
-                      ),
-                    ],
                     borderRadius: BorderRadius.circular(15),
                   ),
-
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
                       horizontal: 35,
@@ -324,7 +322,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   style: GoogleFonts.montserrat(
                                     fontWeight: FontWeight.w500,
                                     fontSize: 13,
-                                    color: Colors.black,
+                                    color: Colors.white,
                                   ),
                                 ),
                                 Row(children: [   
@@ -335,7 +333,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   style: GoogleFonts.montserrat(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 25,
-                                    color: Colors.black,
+                                    color: Colors.white,
                                   ),
                                 ),
                               ],
@@ -347,7 +345,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   style: GoogleFonts.montserrat(
                                     fontWeight: FontWeight.w500,
                                     fontSize: 12,
-                                    color: Colors.black,
+                                    color: Colors.white,
                                   ),
                                 ),
                                 Text(
@@ -355,7 +353,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   style: GoogleFonts.montserrat(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 25,
-                                    color: Colors.black,
+                                    color: Colors.white,
                                   ),
                                 ),
                               ],
@@ -370,21 +368,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
                 Container(
                   decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: AlignmentGeometry.topRight,
-                      end: AlignmentDirectional.bottomStart,
-                      colors: [Colors.teal, Colors.tealAccent, Colors.white60],
+                    border: Border.all(color: Colors.white24),
+                    image: DecorationImage(
+                      image: AssetImage('assets/images/atmcard.png'),
+                      fit: BoxFit.cover,
                     ),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.white60,
-                        offset: Offset(-2, 2),
-                        blurRadius: 10,
-                      ),
-                    ],
                     borderRadius: BorderRadius.circular(15),
                   ),
-
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
                       horizontal: 35,
@@ -406,7 +396,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   style: GoogleFonts.montserrat(
                                     fontWeight: FontWeight.w500,
                                     fontSize: 13,
-                                    color: Colors.black,
+                                    color: Colors.white,
                                   ),
                                 ),
                                 Row(children: [   
@@ -417,7 +407,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   style: GoogleFonts.montserrat(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 25,
-                                    color: Colors.black,
+                                    color: Colors.white,
                                   ),
                                 ),
                               ],
@@ -429,7 +419,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   style: GoogleFonts.montserrat(
                                     fontWeight: FontWeight.w500,
                                     fontSize: 12,
-                                    color: Colors.black,
+                                    color: Colors.white,
                                   ),
                                 ),
                                 Text(
@@ -437,7 +427,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   style: GoogleFonts.montserrat(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 25,
-                                    color: Colors.black,
+                                    color: Colors.white,
                                   ),
                                 ),
                               ],
@@ -451,9 +441,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 SizedBox(height: 30),
                 Container(
                   width: double.infinity,
-                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
                   decoration: BoxDecoration(
-                    color: Color(0xFF000000),
+                    border: Border.all(color: Colors.white12),
+                    color: Colors.black26,
                     borderRadius: BorderRadius.circular(16),
                   ),
                   child: Column(
@@ -470,6 +461,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        spacing: 5,
                         children: [
                           container(
                             label: 'expense',

@@ -35,20 +35,26 @@ class _HomepageState extends State<Homepage> {
     return PopScope(
       canPop: false,
       child: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomCenter,
             colors: [
-              Color.fromARGB(255, 2, 71, 88), // Deep violet at top
-              Color.fromARGB(255, 0, 28, 42), // Rich indigo center
-              Color.fromARGB(255, 1, 29, 55), // Rich indigo center
+              Color.fromARGB(255, 108, 5, 132),
+              Color.fromARGB(255, 0, 0, 0),
+              Color.fromARGB(255, 0, 0, 0),
+              Color.fromARGB(255, 0, 0, 0),
+              Color.fromARGB(255, 46, 3, 56),
+              Color.fromARGB(255, 92, 3, 112),
+              Color.fromARGB(255, 50, 3, 60),
+              Color.fromARGB(255, 0, 0, 0), // Rich indigo center
               Color.fromARGB(255, 9, 0, 18), // Subtle purple at bottom
             ],
           ),
         ),
         child: Scaffold(
           appBar: AppBar(
+            automaticallyImplyLeading: false,
             backgroundColor: Colors.transparent,
             elevation: 0,
             title: Text(
@@ -63,7 +69,7 @@ class _HomepageState extends State<Homepage> {
           backgroundColor: Colors.transparent,
           body: SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 spacing: 15,
@@ -293,90 +299,89 @@ class _HomepageState extends State<Homepage> {
     if (user.isEmpty) {
       return Center(child: Text("No Data Found"));
     } else {
-      return Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: AlignmentGeometry.topRight,
-            end: AlignmentDirectional.bottomStart,
-            colors: [Colors.teal, Colors.tealAccent, Colors.white60],
-          ),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.white60,
-              offset: Offset(-2, 2),
-              blurRadius: 10,
+      return Stack(
+        children: [
+          Container(
+            height: 220,
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.white12),
+              image: DecorationImage(
+                image: AssetImage('assets/images/atmcard.png'),
+                fit: BoxFit.contain,
+              ),
+              borderRadius: BorderRadius.circular(15),
             ),
-          ],
-          borderRadius: BorderRadius.circular(15),
-        ),
-
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 35, vertical: 25),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            spacing: 10,
-            children: [
-              Text(
-                '  ${user.first['name']}',
-                style: GoogleFonts.montserrat(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                  color: Colors.black,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              spacing: 10,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  spacing: 20,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Your budget',
+                          style: GoogleFonts.montserrat(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 13,
+                            color: Colors.white,
+                          ),
+                        ),
+                        Row(children: [   
+                          ],
+                        ),
+                        Text(
+                          '  ₹${user.first['budget']}',
+                          style: GoogleFonts.montserrat(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 25,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        Text(
+                          'Your income',
+                          style: GoogleFonts.montserrat(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 12,
+                            color: Colors.white,
+                          ),
+                        ),
+                        Text(
+                          '₹${user.first['income']}',
+                          style: GoogleFonts.montserrat(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 25,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                spacing: 20,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Your budget',
-                        style: GoogleFonts.montserrat(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 13,
-                          color: Colors.black,
-                        ),
-                      ),
-                      Row(children: [   
-                        ],
-                      ),
-                      Text(
-                        '  ₹${user.first['budget']}',
-                        style: GoogleFonts.montserrat(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 25,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Text(
-                        'Your income',
-                        style: GoogleFonts.montserrat(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 12,
-                          color: Colors.black,
-                        ),
-                      ),
-                      Text(
-                        '₹${user.first['income']}',
-                        style: GoogleFonts.montserrat(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 25,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
+          Positioned(
+            bottom: 10,
+            left: 10,
+            child: Text(
+              '  ${user.first['name']}',
+              style: GoogleFonts.montserrat(
+                fontSize: 18,
+                color: Colors.white,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ),
+        ],
       );
     }
   }

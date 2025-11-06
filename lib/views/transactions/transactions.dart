@@ -79,10 +79,16 @@ class _TransactionsState extends State<Transactions> {
 
   Future<void> deleteexpense(int id) async {
     await helper.deleteExpense(id);
+    getexpenses();
+    gettotalexpense();
+    setState(() {});
   }
 
   Future<void> deleteincome(int id) async {
     await helper.deleteIncome(id);
+    getincome();
+    gettotalincome();
+    setState(() {});
   }
 
   @override
@@ -93,9 +99,14 @@ class _TransactionsState extends State<Transactions> {
           begin: Alignment.topLeft,
           end: Alignment.bottomCenter,
           colors: [
-            Color.fromARGB(255, 2, 71, 88), // Deep violet at top
-            Color.fromARGB(255, 0, 28, 42), // Rich indigo center
-            Color.fromARGB(255, 1, 29, 55), // Rich indigo center
+            Color.fromARGB(255, 108, 5, 132),
+            Color.fromARGB(255, 0, 0, 0),
+            Color.fromARGB(255, 0, 0, 0),
+            Color.fromARGB(255, 0, 0, 0),
+            Color.fromARGB(255, 46, 3, 56),
+            Color.fromARGB(255, 92, 3, 112),
+            Color.fromARGB(255, 50, 3, 60),
+            Color.fromARGB(255, 0, 0, 0), // Rich indigo center
             Color.fromARGB(255, 9, 0, 18), // Subtle purple at bottom
           ],
         ),
@@ -125,9 +136,243 @@ class _TransactionsState extends State<Transactions> {
   Widget _body() {
     if (isloading) {
       return Center(child: CircularProgressIndicator());
-    } else if (user.isEmpty || expenselist.isEmpty || incomelist.isEmpty) {
-      return Center(
-        child: Text("No data found", style: TextStyle(color: Colors.white)),
+    } else if (user.isEmpty || expenselist.isEmpty && incomelist.isEmpty) {
+      return Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: Column(
+          children: [
+            SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      selectedscreen = 0;
+                    });
+                  },
+
+                  child: selectedscreen == 0
+                      ? Container(
+                          decoration: BoxDecoration(
+                            color: Colors.white24,
+                            border: Border.all(color: Colors.white60),
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          padding: EdgeInsets.symmetric(
+                            vertical: 10,
+                            horizontal: 50,
+                          ),
+                          child: Text(
+                            'Expense',
+                            style: GoogleFonts.montserrat(
+                              fontSize: 16,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        )
+                      : Container(
+                          decoration: BoxDecoration(
+                            color: Colors.black12,
+                            border: Border.all(color: Colors.white60),
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          padding: EdgeInsets.symmetric(
+                            vertical: 10,
+                            horizontal: 50,
+                          ),
+                          child: Text(
+                            'Expense',
+                            style: GoogleFonts.montserrat(
+                              fontSize: 16,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      selectedscreen = 1;
+                    });
+                  },
+                  child: selectedscreen == 1
+                      ? Container(
+                          decoration: BoxDecoration(
+                            color: Colors.white24,
+                            border: Border.all(color: Colors.white60),
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          padding: EdgeInsets.symmetric(
+                            vertical: 10,
+                            horizontal: 50,
+                          ),
+                          child: Text(
+                            'Income',
+                            style: GoogleFonts.montserrat(
+                              fontSize: 16,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        )
+                      : Container(
+                          decoration: BoxDecoration(
+                            color: Colors.black12,
+                            border: Border.all(color: Colors.white60),
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          padding: EdgeInsets.symmetric(
+                            vertical: 10,
+                            horizontal: 50,
+                          ),
+                          child: Text(
+                            'Income',
+                            style: GoogleFonts.montserrat(
+                              fontSize: 16,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                ),
+              ],
+            ),
+            SizedBox(height: 30),
+
+            selectedscreen == 0
+                ? Container(
+                    width: double.infinity,
+                    height: 200,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.white12),
+                      image: DecorationImage(
+                        image: AssetImage('assets/images/atmcard - Copy.png'),
+                        fit: BoxFit.contain,
+                      ),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+                    child: Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Column(
+                                children: [
+                                  Text(
+                                    "Balance",
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 12,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                  Text(
+                                    '0',
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 25,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Column(
+                                children: [
+                                  Text(
+                                    "Your total expense",
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 12,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                  Text(
+                                    "0",
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 25,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  )
+                : Container(
+                    width: double.infinity,
+                    height: 200,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.white12),
+                      image: DecorationImage(
+                        image: AssetImage('assets/images/atmcard - Copy.png'),
+                        fit: BoxFit.contain,
+                      ),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Column(
+                              children: [
+                                Text(
+                                  "Your Income",
+                                  style: GoogleFonts.montserrat(
+                                    fontSize: 12,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                                Text(
+                                  "₹${user.first['income']}",
+                                  style: GoogleFonts.montserrat(
+                                    fontSize: 25,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Column(
+                              children: [
+                                Text(
+                                  "Current total",
+                                  style: GoogleFonts.montserrat(
+                                    fontSize: 12,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                                Text(
+                                  "₹$totalincome",
+                                  style: GoogleFonts.montserrat(
+                                    fontSize: 25,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+          ],
+        ),
       );
     } else {
       return SingleChildScrollView(
@@ -239,24 +484,13 @@ class _TransactionsState extends State<Transactions> {
               selectedscreen == 0
                   ? Container(
                       width: double.infinity,
-                      height: 150,
+                      height: 200,
                       decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: AlignmentGeometry.topRight,
-                          end: AlignmentDirectional.bottomStart,
-                          colors: [
-                            Colors.teal,
-                            Colors.tealAccent,
-                            Colors.white60,
-                          ],
+                        border: Border.all(color: Colors.white12),
+                        image: DecorationImage(
+                          image: AssetImage('assets/images/atmcard - Copy.png'),
+                          fit: BoxFit.contain,
                         ),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.white60,
-                            offset: Offset(-2, 2),
-                            blurRadius: 10,
-                          ),
-                        ],
                         borderRadius: BorderRadius.circular(15),
                       ),
                       padding: EdgeInsets.symmetric(
@@ -276,7 +510,7 @@ class _TransactionsState extends State<Transactions> {
                                       "Balance",
                                       style: GoogleFonts.montserrat(
                                         fontSize: 12,
-                                        color: Colors.black,
+                                        color: Colors.white,
                                         fontWeight: FontWeight.w600,
                                       ),
                                     ),
@@ -284,7 +518,7 @@ class _TransactionsState extends State<Transactions> {
                                       '$avbalance',
                                       style: GoogleFonts.montserrat(
                                         fontSize: 25,
-                                        color: Colors.black,
+                                        color: Colors.white,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
@@ -296,7 +530,7 @@ class _TransactionsState extends State<Transactions> {
                                       "Your total expense",
                                       style: GoogleFonts.montserrat(
                                         fontSize: 12,
-                                        color: Colors.black,
+                                        color: Colors.white,
                                         fontWeight: FontWeight.w600,
                                       ),
                                     ),
@@ -304,7 +538,7 @@ class _TransactionsState extends State<Transactions> {
                                       "₹$totalexpense",
                                       style: GoogleFonts.montserrat(
                                         fontSize: 25,
-                                        color: Colors.black,
+                                        color: Colors.white,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
@@ -318,24 +552,13 @@ class _TransactionsState extends State<Transactions> {
                     )
                   : Container(
                       width: double.infinity,
-                      height: 150,
+                      height: 200,
                       decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: AlignmentGeometry.topRight,
-                          end: AlignmentDirectional.bottomStart,
-                          colors: [
-                            Colors.teal,
-                            Colors.tealAccent,
-                            Colors.white60,
-                          ],
+                        border: Border.all(color: Colors.white12),
+                        image: DecorationImage(
+                          image: AssetImage('assets/images/atmcard - Copy.png'),
+                          fit: BoxFit.contain,
                         ),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.white60,
-                            offset: Offset(-2, 2),
-                            blurRadius: 10,
-                          ),
-                        ],
                         borderRadius: BorderRadius.circular(15),
                       ),
                       padding: EdgeInsets.symmetric(
@@ -354,7 +577,7 @@ class _TransactionsState extends State<Transactions> {
                                     "Your Income",
                                     style: GoogleFonts.montserrat(
                                       fontSize: 12,
-                                      color: Colors.black,
+                                      color: Colors.white,
                                       fontWeight: FontWeight.w600,
                                     ),
                                   ),
@@ -362,7 +585,7 @@ class _TransactionsState extends State<Transactions> {
                                     "₹${user.first['income']}",
                                     style: GoogleFonts.montserrat(
                                       fontSize: 25,
-                                      color: Colors.black,
+                                      color: Colors.white,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
@@ -374,7 +597,7 @@ class _TransactionsState extends State<Transactions> {
                                     "Current total",
                                     style: GoogleFonts.montserrat(
                                       fontSize: 12,
-                                      color: Colors.black,
+                                      color: Colors.white,
                                       fontWeight: FontWeight.w600,
                                     ),
                                   ),
@@ -382,7 +605,7 @@ class _TransactionsState extends State<Transactions> {
                                     "₹$totalincome",
                                     style: GoogleFonts.montserrat(
                                       fontSize: 25,
-                                      color: Colors.black,
+                                      color: Colors.white,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),

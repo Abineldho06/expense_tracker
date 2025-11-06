@@ -32,7 +32,22 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Colors.black,
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomCenter,
+            colors: [
+              Color.fromARGB(255, 108, 5, 132),
+              Color.fromARGB(255, 0, 0, 0),
+              Color.fromARGB(255, 0, 0, 0),
+              Color.fromARGB(255, 0, 0, 0),
+              Color.fromARGB(255, 0, 0, 0), // Rich indigo center
+              Color.fromARGB(255, 9, 0, 18),
+              Color.fromARGB(255, 46, 3, 56),
+              Color.fromARGB(255, 59, 1, 72), // Subtle purple at bottom
+            ],
+          ),
+        ),
         height: double.maxFinite,
         width: double.maxFinite,
 

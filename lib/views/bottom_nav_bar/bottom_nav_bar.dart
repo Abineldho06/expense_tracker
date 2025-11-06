@@ -31,9 +31,14 @@ class _BottomNavBarState extends State<BottomNavBar> {
             begin: Alignment.topLeft,
             end: Alignment.bottomCenter,
             colors: [
-              Color.fromARGB(255, 2, 71, 88), // Deep violet at top
-              Color.fromARGB(255, 0, 28, 42), // Rich indigo center
-              Color.fromARGB(255, 1, 29, 55), // Rich indigo center
+              Color.fromARGB(255, 108, 5, 132),
+              Color.fromARGB(255, 0, 0, 0),
+              Color.fromARGB(255, 0, 0, 0),
+              Color.fromARGB(255, 0, 0, 0),
+              Color.fromARGB(255, 46, 3, 56),
+              Color.fromARGB(255, 92, 3, 112),
+              Color.fromARGB(255, 50, 3, 60),
+              Color.fromARGB(255, 0, 0, 0), // Rich indigo center
               Color.fromARGB(255, 9, 0, 18), // Subtle purple at bottom
             ],
           ),
@@ -44,7 +49,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
           bottomNavigationBar: DotCurvedBottomNav(
             scrollController: _scrollController,
             hideOnScroll: true,
-            indicatorColor: Colors.teal,
+            indicatorColor: const Color.fromARGB(255, 215, 91, 237),
             backgroundColor: Colors.white30,
             animationDuration: const Duration(milliseconds: 300),
             animationCurve: Curves.ease,
@@ -58,19 +63,27 @@ class _BottomNavBarState extends State<BottomNavBar> {
             items: [
               Icon(
                 Icons.home,
-                color: _currentPage == 0 ? Colors.tealAccent : Colors.white,
+                color: _currentPage == 0
+                    ? Color.fromARGB(255, 215, 91, 237)
+                    : Colors.white,
               ),
               Icon(
                 Icons.wallet_outlined,
-                color: _currentPage == 1 ? Colors.tealAccent : Colors.white,
+                color: _currentPage == 1
+                    ? Color.fromARGB(255, 215, 91, 237)
+                    : Colors.white,
               ),
               Icon(
                 Icons.analytics_outlined,
-                color: _currentPage == 2 ? Colors.tealAccent : Colors.white,
+                color: _currentPage == 2
+                    ? Color.fromARGB(255, 215, 91, 237)
+                    : Colors.white,
               ),
               Icon(
                 Icons.person,
-                color: _currentPage == 3 ? Colors.tealAccent : Colors.white,
+                color: _currentPage == 3
+                    ? Color.fromARGB(255, 215, 91, 237)
+                    : Colors.white,
               ),
             ],
           ),

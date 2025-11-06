@@ -11,7 +11,7 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.teal,
+        backgroundColor: const Color.fromARGB(255, 244, 244, 244),
         minimumSize: const Size(double.infinity, 50),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       ),
@@ -20,8 +20,8 @@ class CustomButton extends StatelessWidget {
         text,
         style: GoogleFonts.montserrat(
           fontSize: 18,
-          color: Colors.white,
-          fontWeight: FontWeight.w500,
+          color: const Color.fromARGB(255, 110, 9, 110),
+          fontWeight: FontWeight.w600,
         ),
       ),
     );

@@ -190,4 +190,9 @@ class DatabaseHelper {
         : 0.0;
     return total;
   }
+
+  Future<int> deleteusertable() async {
+    await initdb();
+    return await database.delete('user');
+  }
 }

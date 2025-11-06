@@ -44,9 +44,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
             begin: Alignment.topLeft,
             end: Alignment.bottomCenter,
             colors: [
-              Color.fromARGB(255, 2, 71, 88), // Deep violet at top
-              Color.fromARGB(255, 0, 28, 42), // Rich indigo center
-              Color.fromARGB(255, 1, 29, 55), // Rich indigo center
+              Color.fromARGB(255, 108, 5, 132),
+              Color.fromARGB(255, 0, 0, 0),
+              Color.fromARGB(255, 0, 0, 0),
+              Color.fromARGB(255, 0, 0, 0),
+              Color.fromARGB(255, 46, 3, 56),
+              Color.fromARGB(255, 59, 1, 72),
+              Color.fromARGB(255, 50, 3, 60),
+              Color.fromARGB(255, 0, 0, 0), // Rich indigo center
               Color.fromARGB(255, 9, 0, 18), // Subtle purple at bottom
             ],
           ),
