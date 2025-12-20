@@ -51,7 +51,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   void signout() {
     userService.logout();
-    helper.deleteusertable();
+    helper.deleteuserdata();
   }
 
   @override
@@ -461,7 +461,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        spacing: 5,
                         children: [
                           container(
                             label: 'expense',

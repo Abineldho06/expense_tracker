@@ -191,8 +191,12 @@ class DatabaseHelper {
     return total;
   }
 
-  Future<int> deleteusertable() async {
-    await initdb();
-    return await database.delete('user');
+  Future<void> deleteuserdata() async {
+    final db = await database;
+
+    await db.delete('user');
+    await database.delete('category');
+    await database.delete('expense');
+    await database.delete('income');
   }
 }
