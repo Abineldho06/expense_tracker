@@ -250,7 +250,7 @@ class _TransactionsState extends State<Transactions> {
                       border: Border.all(color: Colors.white12),
                       image: DecorationImage(
                         image: AssetImage('assets/images/atmcard - Copy.png'),
-                        fit: BoxFit.contain,
+                        fit: BoxFit.cover,
                       ),
                       borderRadius: BorderRadius.circular(15),
                     ),
@@ -315,7 +315,7 @@ class _TransactionsState extends State<Transactions> {
                       border: Border.all(color: Colors.white12),
                       image: DecorationImage(
                         image: AssetImage('assets/images/atmcard - Copy.png'),
-                        fit: BoxFit.contain,
+                        fit: BoxFit.cover,
                       ),
                       borderRadius: BorderRadius.circular(15),
                     ),
@@ -489,7 +489,7 @@ class _TransactionsState extends State<Transactions> {
                         border: Border.all(color: Colors.white12),
                         image: DecorationImage(
                           image: AssetImage('assets/images/atmcard - Copy.png'),
-                          fit: BoxFit.contain,
+                          fit: BoxFit.cover,
                         ),
                         borderRadius: BorderRadius.circular(15),
                       ),
@@ -557,7 +557,7 @@ class _TransactionsState extends State<Transactions> {
                         border: Border.all(color: Colors.white12),
                         image: DecorationImage(
                           image: AssetImage('assets/images/atmcard - Copy.png'),
-                          fit: BoxFit.contain,
+                          fit: BoxFit.cover,
                         ),
                         borderRadius: BorderRadius.circular(15),
                       ),
@@ -806,14 +806,7 @@ class _TransactionsState extends State<Transactions> {
                                           radius: 25,
                                           backgroundColor: Colors.grey.shade900,
                                           child: Icon(
-                                            IconData(
-                                              int.tryParse(
-                                                    expense['category_icon'] ??
-                                                        '0xf04b',
-                                                  ) ??
-                                                  0xf04b,
-                                              fontFamily: 'MaterialIcons',
-                                            ),
+                                            Icons.category, // default icon
                                             color: Colors.white,
                                             size: 30,
                                           ),
@@ -912,7 +905,7 @@ class _TransactionsState extends State<Transactions> {
                                             style: GoogleFonts.montserrat(
                                               fontSize: 20,
                                               fontWeight: FontWeight.w600,
-                                              color: Colors.redAccent,
+                                              color: Colors.green,
                                             ),
                                           ),
                                           Text(

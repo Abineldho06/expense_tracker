@@ -307,7 +307,7 @@ class _HomepageState extends State<Homepage> {
               border: Border.all(color: Colors.white12),
               image: DecorationImage(
                 image: AssetImage('assets/images/atmcard.png'),
-                fit: BoxFit.contain,
+                fit: BoxFit.cover,
               ),
               borderRadius: BorderRadius.circular(15),
             ),

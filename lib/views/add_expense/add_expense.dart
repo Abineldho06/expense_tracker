@@ -216,13 +216,7 @@ class _AddExpenseScreenState extends State<AddExpenseScreen> {
                           value: cat,
                           child: Row(
                             children: [
-                              Icon(
-                                IconData(
-                                  int.tryParse(cat.icon ?? '0xf04b') ?? 0xf04b,
-                                  fontFamily: 'MaterialIcons',
-                                ),
-                                color: Colors.white70,
-                              ),
+                              Icon(Icons.category, color: Colors.white70),
                               const SizedBox(width: 8),
                               Text(
                                 cat.name,
